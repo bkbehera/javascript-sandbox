@@ -25,12 +25,15 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="uploadForm">
+                 <div class="modal-body">
+                    <!-- Simple Form that Posts to /tbl/upload/ -->
+                    <form id="uploadForm" action="/tbl/upload/" method="POST" enctype="multipart/form-data">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="fileInput" accept=".json">
+                            <input type="file" class="custom-file-input" id="fileInput" name="file" accept=".csv" required>
                             <label class="custom-file-label" for="fileInput">Choose file</label>
                         </div>
+                        <!-- Submit button within form to trigger POST -->
+                        <button type="submit" class="btn btn-primary mt-3">Upload</button>
                     </form>
                 </div>
                 <div class="modal-footer">
