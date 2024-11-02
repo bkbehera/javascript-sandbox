@@ -1,0 +1,29 @@
+<!-- HTML for Email Input -->
+<div class="form-group">
+  <label for="email">Email address</label>
+  <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email">
+  <small id="emailHelp" class="form-text text-muted">Please enter a valid email address.</small>
+</div>
+<div id="emailDomainError" class="text-danger" style="display: none;">
+  Invalid domain name. Please use a valid domain.
+</div>
+
+<!-- JavaScript for Domain Validation -->
+<script>
+  document.getElementById('email').addEventListener('input', function() {
+    const email = this.value;
+    const domainPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const allowedDomains = ['example.com', 'test.com']; // List your allowed domains here
+
+    if (domainPattern.test(email)) {
+      const domain = email.split('@')[1];
+      if (!allowedDomains.includes(domain)) {
+        document.getElementById('emailDomainError').style.display = 'block';
+      } else {
+        document.getElementById('emailDomainError').style.display = 'none';
+      }
+    } else {
+      document.getElementById('emailDomainError').style.display = 'none';
+    }
+  });
+</script>
