@@ -27,3 +27,28 @@
     }
   });
 </script>
+<script>
+  $(document).ready(function() {
+    $("#wizardForm").steps({
+      headerTag: "h3",
+      bodyTag: "section",
+      transitionEffect: "slide",
+      autoFocus: true,
+      onStepChanging: function(event, currentIndex, newIndex) {
+        // Example: Review inputs before proceeding to Step 3
+        if (currentIndex === 1 && newIndex === 2) {
+          var name = $("#name").val();
+          var email = $("#email").val();
+          $("#reviewName").text(name);
+          $("#reviewEmail").text(email);
+        }
+        return true; // Allow moving to the next step
+      },
+      onFinished: function(event, currentIndex) {
+        // Trigger the form's submit action
+        $("#wizardForm").submit();
+      }
+    });
+  });
+</script>
+
